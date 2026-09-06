@@ -1,33 +1,114 @@
-# Expanded booking and story pages
+# Booking email notification
 
-- [ ] Add Both as a selectable booking service.
-- [ ] Add Other as a selectable booking service with a required details text box.
-- [ ] Preserve Driveway and Trash bins pricing and estimates.
-- [ ] Link Surface Stories cards to detail routes.
-- [ ] Add an Our Story page with the supplied three-student business story.
-- [ ] Add Trash Bins detail page content.
-- [ ] Add Concrete Cleaning detail page content.
-- [ ] Keep navigation and back-to-home paths available.
-- [ ] Verify desktop and mobile routing, booking, and form states.
-- [ ] Run type-check and production build.
-- [ ] Save and deliver the updated checkpoint.
+- [x] Upgrade the static project to support a secure server-side submission handler.
+- [x] Add a public booking-request procedure that validates customer and scope fields.
+- [x] Send an owner notification containing the customer’s name, email, phone, preferred date, selected service, estimate, and custom details.
+- [x] Connect the checkout form to the server procedure and handle success/failure states.
+- [x] Verify the production build and booking UI.
+- [x] Save a checkpoint so the updated live version is available.
 
-## Content direction
+## Email delivery follow-up
 
-The new pages should retain the black-and-aqua editorial system, use the existing generated imagery where appropriate, and avoid fabricated reviews or testimonials. The supplied Our Story copy should be preserved faithfully while being formatted into readable sections.
+- [x] Replace the project-owner alert with direct email delivery; superseded destination is surfacecleanfrisco@gmail.com.
+- [x] Configure the selected delivery endpoint securely via Google Apps Script; no paid email provider credentials required.
+- [x] Verify the Google Apps Script configuration with a unit test, production build, and responsive UI check.
+- [x] Save a new checkpoint after the direct-email implementation is live.
 
-## End
+- [x] Use surfacecleanfrisco@gmail.com as the booking notification recipient.
 
-- [ ] Complete.
+## Free Google Apps Script delivery
 
-## Current markup findings
+- [x] Add a Google Apps Script `doPost` template that emails requests to surfacecleanfrisco@gmail.com.
+- [x] Add a project setting for the deployed Apps Script web-app URL.
+- [x] Connect checkout submission to the configured endpoint with success and failure handling.
+- [x] Add a unit test for the endpoint configuration and endpoint health check.
+- [x] Verify the build and save a checkpoint.
 
-The booking flow currently separates the scope step from the contact-details step and keeps pricing in local state, so Both can combine driveway and bin totals while Other can switch to a custom quote. The Surface Stories gallery is a separate AccordionGallery component and can be converted from clickable buttons into route links without affecting the rest of the page.
+- [x] Configure the provided Google Apps Script `/exec` URL as the booking delivery endpoint.
 
-## Routing findings
+- [x] Replace the stored Google Apps Script endpoint with the newly provided `/exec` URL.
 
-The app currently has a single Home route with a NotFound fallback. AccordionGallery currently uses buttons, so each tile will be converted into an anchor-style route link. New routes will use `/our-story`, `/trash-bins`, and `/concrete-cleaning`, with a shared detail-page layout and back-to-home navigation.
+- [x] Replace the stored booking endpoint with the latest Google Apps Script `/exec` URL provided by the user.
 
-## Verification findings
+- [x] Update the prior endpoint health test so it no longer expects an obsolete deployment URL.
 
-Desktop and mobile screenshots confirm the Home page remains intact, the Surface Stories tiles route to Our Story, Trash Bins, and Concrete Cleaning, and each detail page has a readable hero, supplied Our Story content, clear pricing, scope notes, and a booking CTA. The expanded quote and booking controls compile with Both and Other states; Other exposes a details textarea and custom quote state.
+## Apps Script sender account
+
+- [x] Prepare the script to send from the tejas.ss.0201@gmail.com account to surfacecleanfrisco@gmail.com; replacement script delivered for user deployment.
+- [x] Provide deployment steps that preserve the existing website `/exec` URL when the existing deployment is updated.
+- [x] Explain the account authorization and verification requirement.
+
+- [x] Verify and configure the newest Google Apps Script `/exec` URL supplied by the user.
+
+- [x] Update the older endpoint test so the full suite validates the currently configured deployment instead of a superseded URL.
+
+## Footer email update
+
+- [x] Replace the footer email text and mailto link with surfacecraftfrisco@gmail.com.
+- [x] Verify the footer rendering and production build.
+- [x] Save a checkpoint so the updated footer is live.
+
+## Footer verification findings
+
+Desktop and mobile full-page previews both show the updated footer email `surfacecraftfrisco@gmail.com`; the email link and footer layout remain intact. Type-checking and production build pass.
+
+## Social links
+
+- [x] Add Instagram, TikTok, and WhatsApp links to the footer.
+- [x] Add Instagram, TikTok, and WhatsApp links to the mobile StaggeredMenu.
+- [x] Verify external link targets and responsive rendering.
+- [x] Run the production build and save a checkpoint.
+
+## Social link verification findings
+
+Desktop and mobile full-page previews show the Instagram, TikTok, and WhatsApp links in the footer. The mobile StaggeredMenu now includes Instagram, TikTok, WhatsApp 972-880-9311, phone, and the updated email contact. Type-checking and production build pass.
+
+- [x] Verify the mobile StaggeredMenu socialItems wiring and responsive mobile preview; links are supplied directly to the installed menu component.
+- [x] Save a new checkpoint after the social-links update so the live version includes the footer and mobile-menu changes.
+
+## Facebook link
+
+- [x] Add the provided Facebook link to the footer.
+- [x] Add the provided Facebook link to the mobile StaggeredMenu.
+- [x] Verify the updated social links and production build.
+- [x] Save a checkpoint with the Facebook update live.
+
+## Facebook verification findings
+
+The updated Facebook link is present in the footer social set on desktop and in the mobile StaggeredMenu socialItems alongside Instagram, TikTok, WhatsApp, phone, and email. The production build and responsive previews pass.
+
+## Icon-only footer socials
+
+- [x] Replace footer social text labels with icon-only accessible links.
+- [x] Verify the simplified footer on desktop and mobile.
+- [x] Run the production build and save a checkpoint.
+
+## Icon-only footer verification findings
+
+The footer now shows compact icon-only controls for Instagram, TikTok, Facebook, and WhatsApp on both desktop and mobile previews. Each link retains an accessible aria-label and title, and the production build passes.
+
+## Brand social icons
+
+- [x] Replace the generic TikTok and WhatsApp footer icons with recognizable brand-logo marks.
+- [x] Preserve accessible labels and existing social destinations.
+- [x] Verify the footer on desktop and mobile and save a checkpoint.
+
+## Brand icon verification findings
+
+Desktop and mobile previews show recognizable TikTok and WhatsApp logo marks in the compact footer social row. The links retain their original destinations and accessible aria-labels/titles. Type-checking and production build pass.
+
+## Missing footer brand icons
+
+- [x] Fix TikTok and WhatsApp footer icons so their visible marks render reliably.
+- [x] Verify both icons on desktop and mobile.
+- [x] Run the production build and save a checkpoint.
+
+## Visible brand-icon verification findings
+
+After adding explicit SVG dimensions and display rules, the TikTok and WhatsApp logo marks are visibly rendered in the footer on both desktop and mobile previews. Type-checking and production build pass.
+
+## Downloadable website archive
+
+- [ ] Package the complete project source and configuration into a ZIP archive.
+- [ ] Exclude dependencies, build output, logs, and environment secrets from the archive.
+- [ ] Verify the archive contents and deliver the download.
