@@ -1,0 +1,150 @@
+/* Surface Craft — The Restoration Journal.
+   File style: the Particles component is a quiet atmospheric field, never a competing decoration.
+   Does this choice reinforce or dilute our design philosophy? Keep it low-contrast, fixed, and content-safe. */
+.particles-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.particles-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-particles {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .62;
+  pointer-events: auto;
+}
+
+.particles-sidebar {
+  position: fixed;
+  z-index: 29;
+  top: 50%;
+  left: .82rem;
+  width: 4.75rem;
+  height: 16rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(2, 8, 10, .72);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .2);
+  backdrop-filter: blur(10px);
+  opacity: .95;
+  pointer-events: auto;
+  transform: translateY(-50%);
+  isolation: isolate;
+}
+
+.particles-sidebar .particles-container {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+}
+
+
+
+.particles-sidebar::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-right: 1px solid rgba(255, 255, 255, .12);
+  background: linear-gradient(90deg, rgba(5, 10, 8, .48), transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.particles-sidebar__heading {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  right: 1rem;
+  left: 1rem;
+  display: grid;
+  gap: .35rem;
+  pointer-events: none;
+}
+
+.particles-sidebar__heading span,
+.particles-sidebar__hint {
+  color: var(--green);
+  font-size: .53rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.particles-sidebar__heading strong {
+  color: rgba(255, 255, 255, .9);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
+.particles-sidebar__index {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: .85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .55rem;
+  color: rgba(255, 255, 255, .68);
+  font-size: .53rem;
+  font-weight: 800;
+  letter-spacing: .04em;
+  transform: translateY(-50%);
+}
+
+.particles-sidebar__index strong {
+  color: var(--green);
+  font-size: .64rem;
+}
+
+.particles-sidebar__index i {
+  width: 1px;
+  height: 2.25rem;
+  background: linear-gradient(var(--green), rgba(255, 255, 255, .15));
+}
+
+.particles-sidebar__index a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .16s ease, transform .16s ease;
+}
+
+.particles-sidebar__index a:hover,
+.particles-sidebar__index a:focus-visible {
+  color: var(--green);
+  transform: translateX(2px);
+}
+
+.particles-sidebar__hint {
+  position: absolute;
+  z-index: 2;
+  right: 1rem;
+  bottom: 1.25rem;
+  left: 1rem;
+  color: rgba(255, 255, 255, .47);
+  font-size: .48rem;
+  letter-spacing: .08em;
+}
+
+@media (max-width: 760px) {
+  .particles-sidebar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particles-sidebar__index a {
+    transition: none;
+  }
+}
