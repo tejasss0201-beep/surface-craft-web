@@ -109,6 +109,24 @@ After adding explicit SVG dimensions and display rules, the TikTok and WhatsApp 
 
 ## Downloadable website archive
 
-- [ ] Package the complete project source and configuration into a ZIP archive.
-- [ ] Exclude dependencies, build output, logs, and environment secrets from the archive.
-- [ ] Verify the archive contents and deliver the download.
+- [x] Package the complete project source and configuration into a ZIP archive.
+- [x] Exclude dependencies, build output, logs, and environment secrets from the archive.
+- [x] Verify the archive contents and deliver the download.
+
+## Mobile menu social icons
+
+- [x] Render Instagram, TikTok, Facebook, and WhatsApp as icons in the mobile menu social area.
+- [x] Preserve accessible labels and keep phone/email actions available.
+- [x] Verify the mobile menu and production build, then save a checkpoint.
+
+## Mobile menu icon verification findings
+
+The installed StaggeredMenu now renders icon nodes for phone, WhatsApp, Instagram, TikTok, Facebook, and email, with accessible labels and titles. The mobile responsive preview remains intact, and type-checking plus production build pass.
+
+- [x] Verify the mobile menu’s icon-only social renderer directly through the component source because the screenshot tool cannot open the animated menu state.
+- [x] Save a new checkpoint after the mobile-menu social icon update.
+
+## Refreshed downloadable archive
+
+- [ ] Package the latest project source with the mobile-menu icon update.
+- [ ] Verify archive integrity and deliver the refreshed download.
