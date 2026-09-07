@@ -133,10 +133,10 @@ The installed StaggeredMenu now renders icon nodes for phone, WhatsApp, Instagra
 
 ## Vercel local image paths
 
-- [ ] Confirm the provided files exist in client/public/images/.
-- [ ] Replace Manus storage references with the exact local image paths across all pages.
-- [ ] Verify image requests and run the production build.
-- [ ] Save a checkpoint with the Vercel-ready image references.
+- [x] Confirm the provided files exist in client/public/images/.
+- [x] Replace Manus storage references with the exact local image paths across all pages.
+- [x] Verify image requests and run the production build.
+- [x] Save a checkpoint with the Vercel-ready image references.
 
 - [x] Create client/public/images/ as the Vercel image destination; await the user-provided image files before updating asset references.
 
@@ -148,6 +148,23 @@ The installed StaggeredMenu now renders icon nodes for phone, WhatsApp, Instagra
 ## Vercel image migration fix
 
 - [x] Audit which image files are actually present and which image URLs are still Manus-specific.
-- [x] Ensure all required image files are available under client/public/images/.
+- [x] Ensure all required image files are available under client/public/images/; downloaded the nine requested assets from the existing project storage and saved them locally.
 - [x] Update every page and component to use local `/images/...` paths.
 - [x] Verify built image requests and create a Vercel-ready downloadable archive.
+
+## Restore Vercel contact flow
+
+- [x] Inspect the exported contact form submission code and current endpoint configuration.
+- [x] Identify the Vercel deployment gap preventing contact requests from being delivered.
+- [x] Verify or prepare the correct contact submission fix and document the required Vercel settings.
+
+## Vercel contact-route fix
+
+- [x] Add a Vercel serverless `/api/booking` endpoint that validates and forwards booking requests to Google Apps Script.
+- [x] Wire the checkout form to `/api/booking` so it works without the Manus Express server.
+- [x] Add Vercel configuration and document the GOOGLE_APPS_SCRIPT_URL environment variable.
+- [x] Add tests and verify the build and contact success/error states.
+
+- [x] Document the Vercel GOOGLE_APPS_SCRIPT_URL environment variable and deployment settings.
+- [x] Ensure api/booking.test.ts is included in the test suite and passes.
+- [x] Exercise the booking endpoint’s validation and delivery error responses and confirm the UI surfaces them.

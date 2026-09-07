@@ -276,28 +276,46 @@ function BookingFlow() {
   const [bins, setBins] = useState(2);
   const [form, setForm] = useState({ name: "", email: "", phone: "", date: "" });
   const [otherDetails, setOtherDetails] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const submitBooking = trpc.booking.submit.useMutation();
   const drivewayTotal = 100 + Math.max(0, area - 700) * 0.14;
   const binsTotal = bins * 15;
   const total = bookingService === "Driveway" ? drivewayTotal : bookingService === "Trash bins" ? binsTotal : bookingService === "Both" ? drivewayTotal + binsTotal : 0;
   const canContinue = step === 1 ? (bookingService !== "Other" || otherDetails.trim().length > 0) : Boolean(form.name && form.email && form.phone && form.date);
   const submit = async () => {
+    setIsSubmitting(true);
+    const payload = {
+      name: form.name,
+      email: form.email,
+      phone: form.phone,
+      date: form.date,
+      service: bookingService,
+      estimate: bookingService === "Other" ? "Custom quote" : `$${total.toFixed(2)} estimated`,
+      drivewayArea: bookingService === "Driveway" || bookingService === "Both" ? area : undefined,
+      binCount: bookingService === "Trash bins" || bookingService === "Both" ? bins : undefined,
+      otherDetails: otherDetails || undefined,
+    };
+
     try {
-      await submitBooking.mutateAsync({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        date: form.date,
-        service: bookingService,
-        estimate: bookingService === "Other" ? "Custom quote" : `$${total.toFixed(2)} estimated`,
-        drivewayArea: bookingService === "Driveway" || bookingService === "Both" ? area : undefined,
-        binCount: bookingService === "Trash bins" || bookingService === "Both" ? bins : undefined,
-        otherDetails: otherDetails || undefined,
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
       });
+
+      if (response.status === 404) {
+        await submitBooking.mutateAsync(payload);
+      } else {
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || "We could not send your request. Please try again.");
+      }
+
       setStep(3);
       toast.success("Your restoration request is noted.", { description: "We’ll use your details to follow up on the scope." });
     } catch (error) {
       toast.error(error instanceof Error ? error.message : "We could not send your request. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return <section id="booking" className="booking-section section-pad">
@@ -319,7 +337,7 @@ function BookingFlow() {
         </motion.div>}
         {step === 3 && <motion.div key="complete" className="booking-panel booking-panel--success" initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3 }}><span className="success-mark"><Check /></span><p className="eyebrow eyebrow--green">Request received</p><h3>Consider it in motion.</h3><p>Thank you, {form.name || "there"}. We will follow up to confirm the scope and your preferred window.</p><div className="success-summary"><span>{bookingService === "Other" ? "Custom scope" : bookingService}</span><b>{bookingService === "Other" ? "Quote to follow" : `$${total.toFixed(2)} estimated`}</b></div><button className="text-link" onClick={() => { setStep(1); setForm({ name: "", email: "", phone: "", date: "" }); setOtherDetails(""); }}>Start another request <ArrowUpRight size={16} /></button></motion.div>}
       </AnimatePresence>
-      {step < 3 && <div className="booking-actions"><button className="back-button" onClick={() => setStep(1)} disabled={step === 1}><ChevronLeft size={18} /> Back</button><ClickSpark><MagneticButton><button className="button button--green" disabled={!canContinue || submitBooking.isPending} onClick={() => step === 1 ? setStep(2) : submit()}>{step === 1 ? "Continue" : submitBooking.isPending ? "Sending…" : "Send request"} <ChevronRight size={18} /></button></MagneticButton></ClickSpark></div>}
+      {step < 3 && <div className="booking-actions"><button className="back-button" onClick={() => setStep(1)} disabled={step === 1}><ChevronLeft size={18} /> Back</button><ClickSpark><MagneticButton><button className="button button--green" disabled={!canContinue || isSubmitting || submitBooking.isPending} onClick={() => step === 1 ? setStep(2) : submit()}>{step === 1 ? "Continue" : isSubmitting || submitBooking.isPending ? "Sending…" : "Send request"} <ChevronRight size={18} /></button></MagneticButton></ClickSpark></div>}
     </div>
   </section>;
 }
