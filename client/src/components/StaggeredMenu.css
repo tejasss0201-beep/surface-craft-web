@@ -240,10 +240,27 @@
   text-decoration: none;
   position: relative;
   padding: 2px 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
   transition:
     color 0.3s ease,
     opacity 0.3s ease;
+}
+
+.sm-socials-link svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+}
+
+.sm-socials-link .social-logo {
+  width: 21px;
+  height: 21px;
+  flex-basis: 21px;
 }
 
 .sm-socials-link:hover {
