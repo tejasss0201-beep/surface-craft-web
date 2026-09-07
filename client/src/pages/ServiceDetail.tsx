@@ -4,12 +4,12 @@ import { ArrowUpRight, Check, ChevronLeft, Droplets, ShieldCheck } from "lucide-
 type ServiceKind = "trash" | "concrete";
 
 const ASSETS = {
-  logo: "/manus-storage/surface-craft-user-logo_63e7e772.png",
-  driveway: "/manus-storage/surface-craft-driveway_0cacd7db.jpg",
-  texture: "/manus-storage/surface-craft-texture_3966913e.jpg",
-  trashBins: "/manus-storage/surface-craft-trashbin-cleaning-user_8bf47eb3.jpeg",
-  residentialConcrete: "/manus-storage/surface-craft-concrete-cleaning-user_361a17f6.webp",
-  concreteTexture: "/manus-storage/surface-craft-concrete-texture_f16e6ae1.webp",
+  logo: "/images/logo.png",
+  driveway: "/images/surface-craft-driveway_0cacd7db.jpg",
+  texture: "/images/texture.jpg",
+  trashBins: "/images/naveen_bins.jpeg",
+  residentialConcrete: "/images/navven_surfacecleaner.webp",
+  concreteTexture: "/images/texture.jpg",
 };
 
 const details: Record<ServiceKind, {

@@ -2,9 +2,9 @@
 import { ArrowUpRight, ChevronLeft } from "lucide-react";
 
 const ASSETS = {
-  logo: "/manus-storage/surface-craft-user-logo_63e7e772.png",
-  hero: "/manus-storage/surface-craft-hero_0e29b748.jpg",
-  patio: "/manus-storage/surface-craft-patio_76dcd499.jpg",
+  logo: "/images/logo.png",
+  hero: "/images/hero.jpg",
+  patio: "/images/patio.jpg",
 };
 
 const storyParagraphs = [
