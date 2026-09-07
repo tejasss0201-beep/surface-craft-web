@@ -128,5 +128,19 @@ The installed StaggeredMenu now renders icon nodes for phone, WhatsApp, Instagra
 
 ## Refreshed downloadable archive
 
-- [ ] Package the latest project source with the mobile-menu icon update.
-- [ ] Verify archive integrity and deliver the refreshed download.
+- [x] Package the latest project source with the mobile-menu icon update.
+- [x] Verify archive integrity and deliver the refreshed download.
+
+## Vercel local image paths
+
+- [ ] Confirm the provided files exist in client/public/images/.
+- [ ] Replace Manus storage references with the exact local image paths across all pages.
+- [ ] Verify image requests and run the production build.
+- [ ] Save a checkpoint with the Vercel-ready image references.
+
+- [x] Create client/public/images/ as the Vercel image destination; await the user-provided image files before updating asset references.
+
+## Refreshed image-folder archive
+
+- [ ] Package the current project including client/public/images/.
+- [ ] Verify the archive and deliver the refreshed download.
